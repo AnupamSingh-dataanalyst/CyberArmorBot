@@ -2,7 +2,7 @@ import whois
 from telegram import Update
 from telegram.ext import Updater, CommandHandler, CallbackContext
 
-TOKEN = "7011299048:AAH7v-N-X5dZSLQrG-n0S9Y9F8Bur9xVwVk"
+TOKEN = "YOUR BOT TOKEN FROM BOT FATHER"
 
 # Command: /start
 def start(update: Update, context: CallbackContext):
