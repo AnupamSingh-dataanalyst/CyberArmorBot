@@ -1,8 +1,12 @@
 import whois
+import os
 from telegram import Update
 from telegram.ext import Updater, CommandHandler, CallbackContext
 
-TOKEN = "YOUR BOT TOKEN FROM BOT FATHER"
+TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
+if not TOKEN:
+    print("Error: TELEGRAM_BOT_TOKEN environment variable not set!")
+    exit(1)
 
 # Command: /start
 def start(update: Update, context: CallbackContext):
