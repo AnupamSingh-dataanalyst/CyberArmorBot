@@ -1,2 +1,4 @@
+Flask
+gunicorn
 python-whois==0.9.5
 python-telegram-bot==13.5
