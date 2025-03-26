@@ -1,3 +1,4 @@
+from flask import Flask
 import whois
 import os
 from telegram import Update
@@ -7,6 +8,11 @@ TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
 if not TOKEN:
     print("Error: TELEGRAM_BOT_TOKEN environment variable not set!")
     exit(1)
+
+app = Flask(__name__)
+@app.route("/")
+def health_check():
+    return "Bot is running!", 200  # Health check response
 
 # Command: /start
 def start(update: Update, context: CallbackContext):
@@ -70,4 +76,6 @@ def main():
 
 # Run the bot
 if __name__ == "__main__":
-    main()
+    from threading import Thread
+    Thread(target=run_bot).start()  # Start bot in a separate thread
+    app.run(host="0.0.0.0", port=8080)  # Start Flask app
