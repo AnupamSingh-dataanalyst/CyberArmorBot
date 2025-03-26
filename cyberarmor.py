@@ -77,5 +77,8 @@ def main():
 # Run the bot
 if __name__ == "__main__":
     from threading import Thread
-    Thread(target=run_bot).start()  # Start bot in a separate thread
-    app.run(host="0.0.0.0", port=8080)  # Start Flask app
+    flask_thread = Thread(target=lambda: app.run(host="0.0.0.0", port=8080))
+    flask_thread.start()
+
+    # Start the Telegram bot (Polling)
+    main()
